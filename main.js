@@ -1,14 +1,17 @@
 "ui";
 
 $ui.layout(
+  <vertical>
+    <appbar>
+      <toolbar id="toolbar" title="小助手" />
+    </appbar>
     <vertical>
-        <appbar>
-            <toolbar id="toolbar" title="小助手" />
-        </appbar>
-        <frame h="*">
-           
-        </frame>
+      <button id="openFish" text="打开咸鱼" />
     </vertical>
+  </vertical>
 );
-
 activity.setSupportActionBar($ui.toolbar);
+
+ui.openFish.click(function () {
+  
+});
