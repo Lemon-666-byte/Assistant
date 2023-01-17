@@ -1,4 +1,5 @@
 var delayClickTime = 1000;
+var selectImageSize = 5;
 auto.waitFor();
 limit();
 log("launch->");
@@ -25,7 +26,13 @@ inputPrice(originalPrice);
 clickViewByDesc("确定");
 sleep(delayClickTime);
 clickAddImage();
-
+sleep(delayClickTime);
+selectImage();
+sleep(delayClickTime);
+clickViewByDesc("下一步");
+sleep(delayClickTime);
+clickViewByDesc("完成");
+sleep(delayClickTime);
 function openFish() {
   var fishPackageName = "com.taobao.idlefish";
   var launch = app.launchPackage(fishPackageName);
@@ -47,7 +54,8 @@ function clickViewById(viewId) {
 }
 
 function clickViewByDesc(desc) {
-  var descObj = descStartsWith(desc).findOne(5000);
+  descStartsWith(desc).waitFor();
+  var descObj = descStartsWith(desc).findOne();
   if (descObj == null) {
     log("没有找到->" + descObj);
     return;
@@ -92,6 +100,21 @@ function clickAddImage() {
   log("找到x->" + x);
   log("找到y->" + y);
   click(x, y);
+}
+
+function selectImage() {
+  var descObj = descStartsWith("选择").find();
+  if (descObj == null) {
+    log("没有找到->" + descObj);
+    return;
+  }
+  log("selectImage->" + descObj);
+  for (let i = 0; i < descObj.length; i++) {
+    if (i < selectImageSize) {
+      descObj[i].click();
+      sleep(500);
+    }
+  }
 }
 
 function limit() {
