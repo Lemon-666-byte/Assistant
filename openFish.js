@@ -30,9 +30,11 @@ sleep(delayClickTime);
 selectImage();
 sleep(delayClickTime);
 clickViewByDesc("下一步");
-sleep(delayClickTime);
+sleep(3500);
 clickViewByDesc("完成");
-sleep(delayClickTime);
+sleep(5000);
+clickViewByDesc("发布");
+
 function openFish() {
   var fishPackageName = "com.taobao.idlefish";
   var launch = app.launchPackage(fishPackageName);
